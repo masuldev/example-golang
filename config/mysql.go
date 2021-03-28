@@ -13,7 +13,7 @@ var (
 )
 
 func ConnectionMysql() (*sql.DB, error) {
-	db, err := sql.Open("mysql", "admin:server12321@tcp(beter-test-db.cj1xvqwlwiwo.ap-northeast-2.rds.amazonaws.com:3306)/outframe")
+	db, err := sql.Open("mysql", "root:password@tcp(localhost:3306)/test-db")
 	if err != nil {
 		return nil, ErrDBConnection
 	}
