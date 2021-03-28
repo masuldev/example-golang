@@ -6,8 +6,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/masuldev/whisper-router/config"
 	"github.com/masuldev/whisper-router/domain"
+	"github.com/masuldev/whisper-router/dto"
+	"github.com/masuldev/whisper-router/service"
 )
 
 var (
@@ -16,7 +17,7 @@ var (
 )
 
 func GetRedis(w http.ResponseWriter, r *http.Request) {
-	var credential domain.RedisCredential
+	var credential dto.RedisDto
 
 	err := json.NewDecoder(r.Body).Decode(&credential)
 	if err != nil {
@@ -25,9 +26,8 @@ func GetRedis(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	redis := config.ConnectionRedis()
+	result, err := service.GetRedis(credential.Parameter)
 
-	result, err := redis.Get(credential.FirstCredential).Result()
 	if err != nil {
 		fmt.Fprint(w, ErrRedisConnection)
 		return
@@ -36,7 +36,7 @@ func GetRedis(w http.ResponseWriter, r *http.Request) {
 }
 
 func SetRedis(w http.ResponseWriter, r *http.Request) {
-	var credential domain.RedisCredential
+	var credential domain.RedisDomain
 
 	err := json.NewDecoder(r.Body).Decode(&credential)
 	if err != nil {
@@ -45,14 +45,11 @@ func SetRedis(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	redis := config.ConnectionRedis()
-
-	result, err := redis.Set(credential.FirstCredential, credential.SecondCredential, 0).Result()
+	err = service.SetRedis(credential)
 	if err != nil {
 		fmt.Fprint(w, "Server: ", ErrRedisConnection)
 		return
 	}
-	fmt.Println(result)
 
 	w.Header().Add("content-type", "application/json")
 
