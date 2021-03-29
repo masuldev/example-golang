@@ -6,6 +6,7 @@ services:
     restart: always
     ports:
       - 6379:6379
+    command: redis-server --requirepass password --appendonly yes
 
   # root user = root
   mysql:

@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/masuldev/whisper-router/domain"
-	"github.com/masuldev/whisper-router/dto"
-	"github.com/masuldev/whisper-router/service"
+	"github.com/masuldev/example-golang/domain"
+	"github.com/masuldev/example-golang/dto"
+	"github.com/masuldev/example-golang/service"
 )
 
 var (

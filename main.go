@@ -3,10 +3,13 @@ package main
 import (
 	"net/http"
 
-	"github.com/masuldev/whisper-router/controller"
+	"github.com/joho/godotenv"
+	"github.com/masuldev/example-golang/controller"
 )
 
 func main() {
+	godotenv.Load("./.env")
+
 	http.HandleFunc("/set", controller.SetRedis)
 	http.HandleFunc("/get", controller.GetRedis)
 

@@ -3,6 +3,7 @@ Dockerized (mysql + golang + redis)
 
 ## Features
  - Uses multi-stage builds for small production images 
+ - Uses .env file
 
 ## Requirements
  - Install docker && docker-compose
@@ -17,5 +18,4 @@ Dockerized (mysql + golang + redis)
  - Add React
  - Add docker-compose for golang container
  - Dockerfile Multi Stage
- - Setting .env
  - Modify MySQL to PostgreSQL

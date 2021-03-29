@@ -3,8 +3,8 @@ package service
 import (
 	"errors"
 
-	"github.com/masuldev/whisper-router/config"
-	"github.com/masuldev/whisper-router/domain"
+	"github.com/masuldev/example-golang/config"
+	"github.com/masuldev/example-golang/domain"
 )
 
 var (
@@ -23,7 +23,7 @@ func GetRedis(credential string) (string, error) {
 	return result, nil
 }
 
-func SetRedis(credential domain.RedisCredential) error {
+func SetRedis(credential domain.RedisDomain) error {
 	redis := config.ConnectionRedis()
 
 	result, err := redis.Set(credential.FirstCredential, credential.SecondCredential, 0).Result()
