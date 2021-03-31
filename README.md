@@ -1,5 +1,5 @@
 # Example Golang
-Dockerized (mysql + golang + redis)
+Dockerized (PostgreSQL + golang + redis)
 
 ## Features
  - Uses multi-stage builds for small production images 
@@ -13,9 +13,9 @@ Dockerized (mysql + golang + redis)
 2. localhost:8080/get or localhost:8000/set for use Redis
 
 ## TO-DO
- - Add using MySQL
+ - Add using PostgreSQL
  - Add Nginx
  - Add React
  - Add docker-compose for golang container
  - Dockerfile Multi Stage
- - Modify MySQL to PostgreSQL
+ - Add Kafka
